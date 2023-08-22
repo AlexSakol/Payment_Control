@@ -1,0 +1,33 @@
+﻿<Window x:Class="Payment_Control.DiagrammWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Payment_Control"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+        mc:Ignorable="d"
+        Title="Диаграмма" Height="450" Width="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Начало периода" VerticalAlignment="Center" Margin="15 25"/>
+            <DatePicker Width="130" Margin="15 0" x:Name="StartDate"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+            <Label Content="Окончание периода" VerticalAlignment="Center" Margin="15 25"/>
+            <DatePicker Width="130" Margin="15 0" x:Name="EndDate"
+                        Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+            <Button Content="Построить диаграмму" Margin="40 0" Click="Button_Create_Diagramm_Click"/>
+        </StackPanel>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Доходы">
+                <lvc:PieChart x:Name="IncomeDiagram" LegendPosition="Bottom"/>
+            </TabItem>
+            <TabItem Header="Расходы">
+                <lvc:PieChart x:Name="PaymentDiagram" LegendPosition="Bottom"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
