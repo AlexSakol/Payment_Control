@@ -32,17 +32,12 @@
         </ToolBar>
         <TabControl Grid.Row="1">
             <TabItem Header="Доходы">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="709*"/>
-                        <ColumnDefinition Width="44*"/>
-                        <ColumnDefinition Width="247*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid>                    
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="Incomes" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3">
+                    <DataGrid x:Name="Incomes" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding IncomeName}"/>
                             <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding IncomeDate, StringFormat={}{0:dd.MM.yyyy}}"/>
