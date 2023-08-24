@@ -42,10 +42,10 @@ namespace Payment_Control
             Income[] incomes;            
             using (EntityContext context = new EntityContext())
             {
-                payments = context.Payments.Where(p => p.PaymentDate >= StartDate.SelectedDate
-                && p.PaymentDate <= EndDate.SelectedDate && p.UserId == user.UserId).ToArray();
-                incomes = context.Incomes.Where(i => i.IncomeDate >= StartDate.SelectedDate
-                && i.IncomeDate <= EndDate.SelectedDate && i.UserId == user.UserId).ToArray();
+                payments = context.Payments.Where(p => p.Date >= StartDatePicker.SelectedDate
+                && p.Date <= EndDatePicker.SelectedDate && p.UserId == user.Id).ToArray();
+                incomes = context.Incomes.Where(i => i.Date >= StartDatePicker.SelectedDate
+                && i.Date <= EndDatePicker.SelectedDate && i.UserId == user.Id).ToArray();
                 
             }
             IncomeSeries = new PieSeries<decimal>[incomes.Length];
@@ -54,8 +54,8 @@ namespace Payment_Control
                 IncomeSeries[i] =
                     new PieSeries<decimal>
                     {
-                        Name = incomes[i].IncomeName, 
-                        Values = new decimal[] { incomes[i].IncomePrice }
+                        Name = incomes[i].Name, 
+                        Values = new decimal[] { incomes[i].Price }
                     };
             }
             IncomeDiagram.Series = IncomeSeries; 
@@ -65,8 +65,8 @@ namespace Payment_Control
                 PaymentSeries[i] =
                     new PieSeries<decimal>
                     {
-                        Name = payments[i].PaymentName,
-                        Values = new decimal[] { payments[i].PaymentPrice }
+                        Name = payments[i].Name,
+                        Values = new decimal[] { payments[i].Price }
                     };
             }
             PaymentDiagram.Series = PaymentSeries;       

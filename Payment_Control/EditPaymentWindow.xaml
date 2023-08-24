@@ -54,40 +54,40 @@
         <Label Grid.Row="5" Content="Оплачен" Margin="15"/>
         <Button Grid.Row="6" Content="Ok" Click="Button_Ok_Click" Margin="15 0"/>
         <Button Grid.Row="6" Grid.Column="1" Content="Отмена" Click="Button_Cancel_Click" Margin="15 0"/>
-        <TextBox x:Name="PaymentName" Grid.Row="1" Grid.Column="1" Margin="15 10" 
+        <TextBox x:Name="PaymentNameBox" Grid.Row="1" Grid.Column="1" Margin="15 10" 
                  Validation.ErrorTemplate="{StaticResource validationFailed}"
                  Style="{StaticResource MaterialDesignTextBoxBase}">
             <TextBox.Text>
-                <Binding Path="PaymentName">
+                <Binding Path="Name">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <DatePicker x:Name="PaymentDate" Grid.Row="2" Grid.Column="1" Margin="15 10"
+        <DatePicker x:Name="PaymentDatePicker" Grid.Row="2" Grid.Column="1" Margin="15 10"
                     Style="{StaticResource MaterialDesignDatePicker}"
             Validation.ErrorTemplate="{StaticResource validationFailed}">
             <DatePicker.SelectedDate>
-                <Binding Path="PaymentDate">
+                <Binding Path="Date">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </DatePicker.SelectedDate>
         </DatePicker>
-        <TextBox x:Name="PaymentPrice" Grid.Row="3" Grid.Column="1" Margin="15 10" 
+        <TextBox x:Name="PaymentPriceBox" Grid.Row="3" Grid.Column="1" Margin="15 10" 
                  Validation.ErrorTemplate="{StaticResource validationFailed}"
                  Style="{StaticResource MaterialDesignTextBoxBase}">
             <TextBox.Text>
-                <Binding Path="PaymentPrice">
+                <Binding Path="Price">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <ComboBox x:Name="PaymentCategory" Grid.Row="4" Grid.Column="1" Margin="15 5"
+        <ComboBox x:Name="PaymentCategoryComboBox" Grid.Row="4" Grid.Column="1" Margin="15 5"
                   Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
         <CheckBox Grid.Row="5" Grid.Column="1" IsChecked="{Binding IsPayed}" Margin="15 10"
                   Style="{StaticResource MaterialDesignCheckBox}"/>

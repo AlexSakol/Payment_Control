@@ -27,30 +27,30 @@ namespace Payment_Control
         public EditIncomeWindow()
         {
             InitializeComponent();
-            foreach (var item in context.IncomeCategories) IncomeCategory.Items.Add(item);            
+            foreach (var item in context.IncomeCategories) IncomeCategoryComboBox.Items.Add(item);            
             this.Closing += Window_Closing;            
         }
         public EditIncomeWindow(Income income) : this()
         {
             this.income = income;
             grd.DataContext = income;
-            IncomeCategory.SelectedIndex = income.IncomeCategoryId - 1;
+            IncomeCategoryComboBox.SelectedIndex = income.IncomeCategoryId - 1;
         }
         private void Button_Cancel_Click(object sender, RoutedEventArgs e) => DialogResult = false;
         
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (IncomeName.Text == null || Regex.IsMatch(IncomeName.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
-                   || IncomeName.Text.Length < 3)
+            if (IncomeNameBox.Text == null || Regex.IsMatch(IncomeNameBox.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
+                   || IncomeNameBox.Text.Length < 3)
                 return;
-            if (IncomeDate.SelectedDate < new DateTime(2000, 01, 01)
-                || IncomeDate.SelectedDate > new DateTime(2100, 01, 01))
+            if (IncomeDatePicker.SelectedDate < new DateTime(2000, 01, 01)
+                || IncomeDatePicker.SelectedDate > new DateTime(2100, 01, 01))
                 return;
             decimal price = 0;
-            if (!decimal.TryParse(IncomePrice.Text, out price) 
+            if (!decimal.TryParse(IncomePriceBox.Text, out price) 
                 || price < 0.01m || price > (decimal)Math.Pow(10, 8)) return;
-            if (IncomeCategory.SelectedIndex < 0) return;
-            income.IncomeCategoryId = IncomeCategory.SelectedIndex + 1;
+            if (IncomeCategoryComboBox.SelectedIndex < 0) return;
+            income.IncomeCategoryId = IncomeCategoryComboBox.SelectedIndex + 1;
             DialogResult = true;
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) =>

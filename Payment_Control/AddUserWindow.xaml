@@ -43,18 +43,18 @@
         <Label Content="Пароль" Grid.Row="3" Margin="15"/>
         <Label Content="Повторите пароль" Grid.Row="4" Margin="15"/>
         <Label Content="Роль" Grid.Row="5" Margin="15"/>
-        <TextBox x:Name="UserName" Grid.Row="1" Grid.Column="1" Margin="15 10"
+        <TextBox x:Name="UserNameBox" Grid.Row="1" Grid.Column="1" Margin="15 10"
                  Style="{StaticResource MaterialDesignTextBoxBase}"
                  Validation.ErrorTemplate="{StaticResource validationFailed}">
             <TextBox.Text>
-                <Binding Path="UserName">
+                <Binding Path="Name">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="Login" Grid.Row="2" Grid.Column="1" Margin = "15 10"
+        <TextBox x:Name="LoginBox" Grid.Row="2" Grid.Column="1" Margin = "15 10"
                  Style="{StaticResource MaterialDesignTextBoxBase}"
                  Validation.ErrorTemplate="{StaticResource validationFailed}">
             <TextBox.Text>
@@ -65,11 +65,11 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <PasswordBox x:Name="Password" Grid.Row="3" Grid.Column="1" Margin="15 10"
+        <PasswordBox x:Name="PasswordBox" Grid.Row="3" Grid.Column="1" Margin="15 10"
                      Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}"/>
-        <PasswordBox x:Name="RepeatPassword" Grid.Row="4" Grid.Column="1" Margin="15 10"
+        <PasswordBox x:Name="RepeatPasswordBox" Grid.Row="4" Grid.Column="1" Margin="15 10"
                      Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}"/>
-        <ComboBox Name="Role" Grid.Row="5" Grid.Column="1" Margin="15 5"
+        <ComboBox Name="RoleComboBox" Grid.Row="5" Grid.Column="1" Margin="15 5"
                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
                   SelectedItem="{Binding Role}" DisplayMemberPath ="{Binding RoleName}"/>
         <Button Content="Ok" Grid.Row="6" Margin="15 10" Click="Button_Ok_Click"/>

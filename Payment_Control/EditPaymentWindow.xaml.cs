@@ -26,7 +26,7 @@ namespace Payment_Control
         public EditPaymentWindow()
         {
             InitializeComponent();
-            foreach (var item in context.PaymentCategories) PaymentCategory.Items.Add(item);
+            foreach (var item in context.PaymentCategories) PaymentCategoryComboBox.Items.Add(item);
             this.Closing += Window_Closing;
         }
 
@@ -34,24 +34,24 @@ namespace Payment_Control
         {
             this.payment = payment;
             grd.DataContext = payment;
-            PaymentCategory.SelectedIndex = payment.PaymentCategoryId - 1;
+            PaymentCategoryComboBox.SelectedIndex = payment.PaymentCategoryId - 1;
         }
         
         private void Button_Cancel_Click(object sender, RoutedEventArgs e) => DialogResult = false;
 
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (PaymentName.Text == null || Regex.IsMatch(PaymentName.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
-                  || PaymentName.Text.Length < 3)
+            if (PaymentNameBox.Text == null || Regex.IsMatch(PaymentNameBox.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
+                  || PaymentNameBox.Text.Length < 3)
                 return;
-            if (PaymentDate.SelectedDate < new DateTime(2000, 01, 01)
-                || PaymentDate.SelectedDate > new DateTime(2100, 01, 01))
+            if (PaymentDatePicker.SelectedDate < new DateTime(2000, 01, 01)
+                || PaymentDatePicker.SelectedDate > new DateTime(2100, 01, 01))
                 return;
             decimal price = 0;
-            if (!decimal.TryParse(PaymentPrice.Text, out price) ||
+            if (!decimal.TryParse(PaymentPriceBox.Text, out price) ||
             price < 0.01m || price > (decimal)Math.Pow(10, 8)) return;
-            if (PaymentCategory.SelectedIndex < 0) return;
-            payment.PaymentCategoryId = PaymentCategory.SelectedIndex + 1;
+            if (PaymentCategoryComboBox.SelectedIndex < 0) return;
+            payment.PaymentCategoryId = PaymentCategoryComboBox.SelectedIndex + 1;
             DialogResult = true;
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) =>

@@ -26,8 +26,8 @@ namespace Payment_Control
         public UsersWindow()
         {
             InitializeComponent();
-            Users.ItemsSource = entityContext.Users.ToList();
-            Roles.ItemsSource = entityContext.Roles.ToList();
+            UsersDataGrd.ItemsSource = entityContext.Users.ToList();
+            RolesComboBox.ItemsSource = entityContext.Roles.ToList();
             this.Closing += Window_Closing;
         }
 
@@ -42,7 +42,7 @@ namespace Payment_Control
             {
                 AddUserWindow addUserWindow = new AddUserWindow();
                 addUserWindow.ShowDialog();
-                Users.ItemsSource = entityContext.Users.ToList();
+                UsersDataGrd.ItemsSource = entityContext.Users.ToList();
             }
         }
         private void Button_Remove_User_Click(object sender, RoutedEventArgs e)
@@ -52,11 +52,11 @@ namespace Payment_Control
                 var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    if (Users.SelectedItems.Count > 0)
+                    if (UsersDataGrd.SelectedItems.Count > 0)
                     {
-                        for (int i = Users.SelectedItems.Count - 1; i >= 0; i--)
+                        for (int i = UsersDataGrd.SelectedItems.Count - 1; i >= 0; i--)
                         {
-                            User user = Users.SelectedItems[i] as User;
+                            User user = UsersDataGrd.SelectedItems[i] as User;
                             if (user != null && user.RoleId != 1 && user != authorizedUser)
                             {
                                 entityContext.Users.Remove(user);
@@ -66,14 +66,14 @@ namespace Payment_Control
                         entityContext.SaveChanges();
                     }
                 }
-                Users.ItemsSource = entityContext.Users.ToList();
+                UsersDataGrd.ItemsSource = entityContext.Users.ToList();
             }
         }
         private void Button_Edit_User_Click(object sender, RoutedEventArgs e)
         {
             if (Authorized_User_Checker(authorizedUser) == true)
             {
-                User user = Users.SelectedItem as User;
+                User user = UsersDataGrd.SelectedItem as User;
                 if (user == null) return;
                 EditUserWindow editWindow = new EditUserWindow(user);
                 if (user.RoleId != 1)
@@ -85,14 +85,14 @@ namespace Payment_Control
                         if (user != null)
                         {
                             entityContext.Entry(user).Reload();
-                            Users.DataContext = null;
-                            Users.DataContext = entityContext.Users.Local;
+                            UsersDataGrd.DataContext = null;
+                            UsersDataGrd.DataContext = entityContext.Users.Local;
                         }
                     }
                 }
                 else MessageBox.Show("Выполнение данного действия невозможно");
             }
-                Users.ItemsSource = entityContext.Users.ToList();
+                UsersDataGrd.ItemsSource = entityContext.Users.ToList();
         }
 
             /// <summary>
@@ -110,10 +110,8 @@ namespace Payment_Control
                 }
                 else return true;
             }
-            void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-            {
-                entityContext.Dispose();
-            }
+            void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) =>            
+                entityContext.Dispose();            
     }
 
 }

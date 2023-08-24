@@ -9,10 +9,10 @@ namespace Payment_Control.Models
 {
     public class PaymentCategory
     {
-        public int PaymentCategoryId { get; set; }
-        public string PaymentCategoryName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public ObservableCollection<Payment> Payments { get; set; }
-        public override string? ToString() => PaymentCategoryName;
+        public override string? ToString() => Name;
         
     }
 }

@@ -9,10 +9,10 @@
     <StackPanel>
         <Label Content="Вход" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
         <Label Content="Логин" Margin="15 0"/>
-        <TextBox x:Name="Login" Style="{StaticResource MaterialDesignTextBoxBase}" Margin="15 0" 
+        <TextBox x:Name="LoginBox" Style="{StaticResource MaterialDesignTextBoxBase}" Margin="15 0" 
                  Height="30"/>
         <Label Content="Пароль" Margin="15 0"/>
-        <PasswordBox x:Name="Password" 
+        <PasswordBox x:Name="PasswordBox" 
                      Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" Margin="15 0"/>
         <Button Content="Войти" Click="Log_In_Button_Click" Margin="100 15"/>
     </StackPanel>

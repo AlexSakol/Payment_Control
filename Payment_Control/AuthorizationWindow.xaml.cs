@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,13 +28,11 @@ namespace Payment_Control
 
         private void Log_In_Button_Click(object sender, RoutedEventArgs e)
         {
-            string login = Login.Text;
-            string password = Password.Password;
             User authorizedUser = null;
             using (EntityContext entityContext = new EntityContext())
             {
-                authorizedUser = entityContext.Users.Where(u => u.Login == login && u.Password == password)
-                    .FirstOrDefault();
+                authorizedUser = (entityContext.Users.Where(u => u.Login == LoginBox.Text 
+                    && u.Password == PasswordBox.Password)).FirstOrDefault();
             }
             if (authorizedUser != null)
             {
@@ -42,7 +41,8 @@ namespace Payment_Control
                 mainWindow.Show();
                 this.Close();
             }
-            else MessageBox.Show("Проверьте логин и пароль");
-        }        
+            else MessageBox.Show("Проверьте логин и пароль");                      
+        }
+
     }
 }

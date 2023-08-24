@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Label Content="Начало периода" VerticalAlignment="Center" Margin="15 25"/>
-            <DatePicker Width="130" Margin="15 0" x:Name="StartDate"
+            <DatePicker Width="130" Margin="15 0" x:Name="StartDatePicker"
                         Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
             <Label Content="Окончание периода" VerticalAlignment="Center" Margin="15 25"/>
-            <DatePicker Width="130" Margin="15 0" x:Name="EndDate"
+            <DatePicker Width="130" Margin="15 0" x:Name="EndDatePicker"
                         Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
             <Button Content="Построить диаграмму" Margin="40 0" Click="Button_Create_Diagramm_Click"/>
         </StackPanel>

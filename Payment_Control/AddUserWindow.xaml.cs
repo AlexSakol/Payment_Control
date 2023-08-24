@@ -29,7 +29,7 @@ namespace Payment_Control
             InitializeComponent();
             this.Closing += Window_Closing;
             grd.DataContext = user;
-            Role.ItemsSource = context.Roles.ToList();
+            RoleComboBox.ItemsSource = context.Roles.ToList();
         }
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -38,33 +38,33 @@ namespace Payment_Control
 
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (UserName.Text == null || Regex.IsMatch(UserName.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
-                || UserName.Text.Length < 3)
+            if (UserNameBox.Text == null || Regex.IsMatch(UserNameBox.Text.Replace(" ", ""), @"[A-Za-z\W\d]")
+                || UserNameBox.Text.Length < 3)
                     return;            
-            if (Login.Text == null || Regex.IsMatch(Login.Text, @"[А-Яа-я\W\d]") || Login.Text.Length < 3)
+            if (LoginBox.Text == null || Regex.IsMatch(LoginBox.Text, @"[А-Яа-я\W\d]") || LoginBox.Text.Length < 3)
                     return;
-            if (context.Users.Any(u => u.Login == Login.Text))
+            if (context.Users.Any(u => u.Login == LoginBox.Text))
             {
                 MessageBox.Show("Пользователь с данным логином уже существует");
                 return;
             }
-            if (Password.Password.Length < 4)
+            if (PasswordBox.Password.Length < 4)
             {
                 MessageBox.Show("Пароль не может быть меньше 4-х символов");
                 return;
             }
-            if (Password.Password != RepeatPassword.Password)
+            if (PasswordBox.Password != RepeatPasswordBox.Password)
             {
                 MessageBox.Show("Пароли не совпадают");
                 return;
             }
-            if (Regex.IsMatch(Password.Password, @"[А-Яа-я]"))
+            if (Regex.IsMatch(PasswordBox.Password, @"[А-Яа-я]"))
             {
                 MessageBox.Show("Пароль не может содержать кириллицу");
                 return;
             }            
-            if (Role.SelectedIndex < 0) return;
-            user.Password = Password.Password;
+            if (RoleComboBox.SelectedIndex < 0) return;
+            user.Password = PasswordBox.Password;
             context.Users.Add(user);
             context.SaveChanges();         
             this.Close();

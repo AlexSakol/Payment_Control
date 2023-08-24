@@ -18,23 +18,15 @@ namespace Payment_Control.Models
         public DbSet<Income> Incomes { get; set; }
         public DbSet<IncomeCategory> IncomeCategories { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<Role> Roles { get; set; }        
 
         //нахождение расходов пользователя
-        public List<Income> IncomesOfUser(User user) 
-        { 
-            var incomes = from i in Incomes
-                          where i.UserId == user.UserId
-                          select i;
-            return incomes.ToList();
-        }
+        public List<Income> IncomesOfUser(User user) => Incomes.Where(i => i.UserId == user.Id)
+            .ToList();
+
         // нахождение доходов пользователя
-        public List<Payment> PaymentsOfUser(User user)
-        {
-            var payments = from p in Payments
-                           where p.UserId == user.UserId
-                           select p;
-            return payments.ToList();
-        }
+        public List<Payment> PaymentsOfUser(User user) => Payments.Where(p => p.UserId == user.Id)
+            .ToList();
+        
     }
 }

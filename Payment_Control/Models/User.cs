@@ -10,8 +10,8 @@ namespace Payment_Control.Models
 {
     public class User: IDataErrorInfo
     {
-        public int UserId { get; set; }
-        public string UserName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }        
         public int RoleId { get; set; }
@@ -23,12 +23,12 @@ namespace Payment_Control.Models
                 string error = String.Empty;
                 switch (columnName)
                 {
-                    case "UserName":
-                        if (UserName != null)
+                    case "Name":
+                        if (Name != null)
                         {
-                            if (Regex.IsMatch(UserName.Replace(" ", ""), @"[A-Za-z\W\d]"))
+                            if (Regex.IsMatch(Name.Replace(" ", ""), @"[A-Za-z\W\d]"))
                                 error = "ФИО пользователя не должно содержать латиницу, спецсимволы и цифры";
-                            if (UserName.Length < 3)
+                            if (Name.Length < 3)
                                 error = "ФИО не может быть меньше 3-х символов";
                         }
                         else error = "Введите ФИО";

@@ -37,12 +37,12 @@
                         <RowDefinition/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="Incomes" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid x:Name="IncomesDataGrd" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding IncomeName}"/>
-                            <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding IncomeDate, StringFormat={}{0:dd.MM.yyyy}}"/>
-                            <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding IncomePrice}"/>
-                            <DataGridComboBoxColumn x:Name="IncomeCategories" Header="Категория" Width="*" 
+                            <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}"/>
+                            <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Price}"/>
+                            <DataGridComboBoxColumn x:Name="IncomeCategoriesComboBox" Header="Категория" Width="*" 
                                         SelectedItemBinding="{Binding IncomeCategory}"/>
                             <DataGridCheckBoxColumn Header="Получен" Width="*" Binding="{Binding IsReceived}"/>
                         </DataGrid.Columns>
@@ -60,12 +60,12 @@
                         <RowDefinition/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="Payments" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid x:Name="PaymentsDataGrd" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding PaymentName}"/>
-                            <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding PaymentDate, StringFormat={}{0:dd.MM.yyyy}}"/>
-                            <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding PaymentPrice}"/>
-                            <DataGridComboBoxColumn x:Name="PaymentCategories" Header="Категория" Width="*" 
+                            <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Дата" Width="*" Binding="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}"/>
+                            <DataGridTextColumn Header="Сумма" Width="*" Binding="{Binding Price}"/>
+                            <DataGridComboBoxColumn x:Name="PaymentCategoriesComboBox" Header="Категория" Width="*" 
                                         SelectedItemBinding="{Binding PaymentCategory}"/>
                             <DataGridCheckBoxColumn Header="Оплачен" Width="*" Binding="{Binding IsPayed}"/>
                         </DataGrid.Columns>
