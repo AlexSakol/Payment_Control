@@ -31,17 +31,14 @@ namespace Payment_Control
             this.Closing += Window_Closing;
         }
 
-        public UsersWindow(User authorizedUser) : this()
-        {
-            this.authorizedUser = authorizedUser;
-        }
+        public UsersWindow(User authorizedUser) : this() =>        
+            this.authorizedUser = authorizedUser;        
 
         private void Add_User_Button_Click(object sender, RoutedEventArgs e)
         {
             if (Authorized_User_Checker(authorizedUser) == true)
             {
-                AddUserWindow addUserWindow = new AddUserWindow();
-                addUserWindow.ShowDialog();
+                new AddUserWindow().ShowDialog();
                 UsersDataGrd.ItemsSource = entityContext.Users.ToList();
             }
         }
@@ -92,7 +89,7 @@ namespace Payment_Control
                 }
                 else MessageBox.Show("Выполнение данного действия невозможно");
             }
-                UsersDataGrd.ItemsSource = entityContext.Users.ToList();
+            UsersDataGrd.ItemsSource = entityContext.Users.ToList();
         }
 
             /// <summary>

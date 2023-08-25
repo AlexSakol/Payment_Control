@@ -26,16 +26,10 @@ namespace Payment_Control
         public PieSeries<decimal>[] IncomeSeries { get; set; }
 
         User user;
-        public DiagrammWindow()
-        {
-            InitializeComponent();            
-        }
-
-        public DiagrammWindow(User user):this()
-        {
-            this.user = user;
-        }
-
+        public DiagrammWindow() => InitializeComponent();            
+        
+        public DiagrammWindow(User user): this() => this.user = user;
+        
         private void Button_Create_Diagramm_Click(object sender, RoutedEventArgs e)
         {
             Payment[] payments;

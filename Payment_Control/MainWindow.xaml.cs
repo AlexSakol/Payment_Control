@@ -152,17 +152,11 @@ namespace Payment_Control
                 "Для добавления/удаления/редактирования доходов и расходов нажмите на кнопки " +
                 "+/-/редактировать под соответсвующей таблицей\n" );
         
-        private void Users_Button_Click(object sender, RoutedEventArgs e)
-        {
-            UsersWindow usersWindow = new UsersWindow(user);
-            usersWindow.ShowDialog();
-        }
-
-        private void Diagramm_Click(object sender, RoutedEventArgs e)
-        {
-            DiagrammWindow diagrammWindow = new DiagrammWindow(user);
-            diagrammWindow.Show();
-        }
+        private void Users_Button_Click(object sender, RoutedEventArgs e) =>        
+           new UsersWindow(user).ShowDialog();
+        
+        private void Diagramm_Click(object sender, RoutedEventArgs e) =>        
+            new DiagrammWindow(user).ShowDialog();        
 
         private void Button_Exit_Click(object sender, RoutedEventArgs e)
         {

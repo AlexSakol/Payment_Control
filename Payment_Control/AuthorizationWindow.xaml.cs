@@ -21,28 +21,24 @@ namespace Payment_Control
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        public AuthorizationWindow()
-        {
-            InitializeComponent();            
-        }
-
+        public AuthorizationWindow() => InitializeComponent();            
+        
         private void Log_In_Button_Click(object sender, RoutedEventArgs e)
         {
             User authorizedUser = null;
             using (EntityContext entityContext = new EntityContext())
             {
-                authorizedUser = (entityContext.Users.Where(u => u.Login == LoginBox.Text 
-                    && u.Password == PasswordBox.Password)).FirstOrDefault();
+                authorizedUser = entityContext.Users.Where(u => u.Login == LoginBox.Text
+                    && u.Password == PasswordBox.Password).FirstOrDefault();
             }
-            if (authorizedUser != null)
+            if (authorizedUser == null) MessageBox.Show("Проверьте логин и пароль");
+            else
             {
                 MessageBox.Show("Вы вошли в систему");
-                MainWindow mainWindow = new MainWindow(authorizedUser);
-                mainWindow.Show();
+                new MainWindow(authorizedUser).Show();
                 this.Close();
             }
-            else MessageBox.Show("Проверьте логин и пароль");                      
-        }
-
+        }            
     }
 }
+
