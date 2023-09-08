@@ -70,18 +70,18 @@ namespace Payment_Control
         {
             if (Authorized_User_Checker(authorizedUser) == true)
             {
-                User user = UsersDataGrd.SelectedItem as User;
-                if (user == null) return;
-                EditUserWindow editWindow = new EditUserWindow(user);
-                if (user.RoleId != 1)
+                User selected_user = UsersDataGrd.SelectedItem as User;
+                if (selected_user == null) return;
+                EditUserWindow editWindow = new EditUserWindow(selected_user);
+                if (selected_user.RoleId != 1)
                 {
                     if (editWindow.ShowDialog() == true)
                         entityContext.SaveChanges();
                     else
                     {
-                        if (user != null)
+                        if (selected_user != null)
                         {
-                            entityContext.Entry(user).Reload();
+                            entityContext.Entry(selected_user).Reload();
                             UsersDataGrd.DataContext = null;
                             UsersDataGrd.DataContext = entityContext.Users.Local;
                         }
