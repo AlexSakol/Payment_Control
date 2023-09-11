@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿//Категории доходов
+
+using System.Collections.ObjectModel;
 
 namespace Payment_Control.Models
 {

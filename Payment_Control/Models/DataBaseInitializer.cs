@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Класс заполнения данными базы данных
+
+using System;
 using System.Data.Entity;
 
 namespace Payment_Control.Models

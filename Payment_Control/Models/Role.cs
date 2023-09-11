@@ -1,5 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿//Роли пользователей
 
+using System.Collections.ObjectModel;
 
 namespace Payment_Control.Models
 {

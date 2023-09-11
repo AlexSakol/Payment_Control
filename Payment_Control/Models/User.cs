@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//Класс пользователей
+
+using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-
 
 namespace Payment_Control.Models
 {

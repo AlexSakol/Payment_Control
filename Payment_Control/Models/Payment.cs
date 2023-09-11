@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Класс платежей
+
+using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 

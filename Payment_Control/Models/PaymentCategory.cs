@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿//Категории  платежей
+
+using System.Collections.ObjectModel;
 
 namespace Payment_Control.Models
 {

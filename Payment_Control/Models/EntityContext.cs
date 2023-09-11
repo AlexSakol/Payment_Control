@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿// Класс для подключения к базе данных
+
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 

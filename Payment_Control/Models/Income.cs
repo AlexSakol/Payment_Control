@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Класс доходов
+
+using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 
